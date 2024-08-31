@@ -1,0 +1,60 @@
+services:
+  frontend:
+    image: node:lts
+    container_name: frontend-sig
+    ports:
+      - ${FRONTEND_PORT}:3000
+    volumes:
+      - ./frontend:/frontend
+    working_dir: /frontend
+    command: npm run dev
+
+  backend:
+    image: node:lts
+    container_name: backend-sig
+    depends_on:
+      - postgis
+    ports:
+      - ${BACKEND_PORT}:3001
+    volumes:
+      - ./backend:/backend
+    working_dir: /backend
+    command: npm run start
+
+  postgis:
+    image: postgis/postgis:latest
+    container_name: postgis-sig
+    ports:
+      - ${POSTGRES_PORT}:5432
+    environment:
+      POSTGRES_PASSWORD: ${PASSWORD}
+    volumes:
+      - postgis-sig-data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin-sig
+    ports:
+      - ${PGADMIN_PORT}:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PASSWORD}
+    volumes:
+      - pgadmin-sig-data:/var/lib/pgadmin
+
+  geoserver:
+    image: docker.osgeo.org/geoserver:2.25.x
+    container_name: geoserver-sig
+    depends_on:
+      - postgis
+    volumes:
+      - ./geoserver:/opt/geoserver_data
+      - ./geoserver/WEB-INF/web.xml:/opt/apache-tomcat-9.0.89/webapps/geoserver/WEB-INF/web.xml
+    ports:
+      - ${GEOSERVER_PORT}:8080
+
+volumes:
+  postgis-sig-data:
+    external: true
+  pgadmin-sig-data:
+    external: true

@@ -1,0 +1,17 @@
+<layer>
+  <name>csb</name>
+  <id>LayerInfoImpl-73dc87df:19165701a45:-7fff</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--445bd1a8:191662ba45b:-8000</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-73dc87df:19165701a45:-8000</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2024-08-18 12:22:11.370 UTC</dateCreated>
+  <dateModified>2024-08-18 15:47:57.132 UTC</dateModified>
+</layer>

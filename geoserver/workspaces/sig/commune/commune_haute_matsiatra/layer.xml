@@ -1,0 +1,16 @@
+<layer>
+  <name>commune_haute_matsiatra</name>
+  <id>LayerInfoImpl--6b9f0098:19154770ee1:-7ffe</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fe0</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--6b9f0098:19154770ee1:-7fff</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2024-08-15 05:16:58.915 UTC</dateCreated>
+</layer>

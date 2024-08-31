@@ -1,0 +1,43 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--6b9f0098:19154770ee1:-7fff</id>
+  <name>commune_haute_matsiatra</name>
+  <nativeName>commune_haute_matsiatra</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl-34c0cfd7:191479de32c:-7fff</id>
+  </namespace>
+  <title>commune_haute_matsiatra</title>
+  <keywords>
+    <string>features</string>
+    <string>commune_haute_matsiatra</string>
+  </keywords>
+  <srs>EPSG:4326</srs>
+  <nativeBoundingBox>
+    <minx>45.52159723022619</minx>
+    <maxx>47.45000451755404</maxx>
+    <miny>-22.20677335613299</miny>
+    <maxy>-20.690115292950747</maxy>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>45.52159723022619</minx>
+    <maxx>47.45000451755404</maxx>
+    <miny>-22.20677335613299</miny>
+    <maxy>-20.690115292950747</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--6b9f0098:19154770ee1:-8000</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <simpleConversionEnabled>false</simpleConversionEnabled>
+  <internationalTitle/>
+  <internationalAbstract/>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>
