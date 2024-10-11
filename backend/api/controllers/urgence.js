@@ -3,15 +3,21 @@ const query = require("../models/urgence");
 const Joi = require("joi");
 
 const getAllUrgence = (req, res) => {
-  fonction.requeteAvecReponse(query.getAllUrgence, res);
+  // fonction.requeteAvecReponse(query.getAllUrgence, res);
+  const validation = Joi.object({
+    urgenceName : Joi.string().valid("csb", "dispensaire", "gendarmerie", "hopital", "jirama", "pharmacie", "police").required(),
+  });
+
+  fonction.requeteAvecValidation(res, validation, req.params, query.getAllUrgence(req.params.urgenceName), true);
 };
 
 const getUrgenceById = (req, res) => {
   const validation = Joi.object({
     idUrgence : Joi.number().integer().required(),
+    urgenceName : Joi.string().valid("csb", "dispensaire", "gendarmerie", "hopital", "jirama", "pharmacie", "police").required(),
   });
 
-  fonction.requeteAvecValidation(res, validation, req.params, query.getUrgenceById, true);
+  fonction.requeteAvecValidation(res, validation, req.params, query.getUrgenceById(req.params.urgenceName), true, [req.params.idUrgence]);
 };
 
 const insertUrgence = (req, res) => {
@@ -19,56 +25,47 @@ const insertUrgence = (req, res) => {
     latitude : Joi.number().precision(6).required(),
     longitude : Joi.number().precision(6).required(),
     nom : Joi.string().required(),
-    type : Joi.string().valid("PDP", "VDP", "JIR", "PMP", "DIS", "CSB", "CHU", "PDR").required(),
-    description : Joi.string().required(),
-    contact : Joi.string().required(),
+    adresse : Joi.string().required(),
+    numero : Joi.string().required(),
+    heure: Joi.string().required(),
+    service : Joi.string().required(),
+    lien : Joi.string().required(),
+    urgenceName : Joi.string().valid("csb", "dispensaire", "gendarmerie", "hopital", "jirama", "pharmacie", "police").required(),
   });
 
-  const { value, error } = validation.validate(req.body);
-  const {latitude, longitude, nom, type, description, contact} = value;
+  const {latitude, longitude, nom, adresse, numero, heure, service, lien, urgenceName} = req.body;
+  const geom = "POINT ("+longitude+" "+latitude+")";
 
-  if(!error){
-    const geom = "POINT ("+longitude+" "+latitude+")";
-
-    fonction.requeteAvecReponse(query.insertUrgence, res, [geom, latitude, longitude, nom, type, description, contact]);
-  } else{
-    console.log("[error] "+error.message);
-    res.status(400);
-    res.end();
-  };
+  fonction.requeteAvecValidation(res, validation, req.body, query.insertUrgence(urgenceName), true, [geom, latitude, longitude, nom, adresse, numero, heure, service, lien]);
 };
 
 const updateUrgence = (req, res) => {
   const validation = Joi.object({
+    idUrgence : Joi.number().integer().required(),
     latitude : Joi.number().precision(6).required(),
     longitude : Joi.number().precision(6).required(),
     nom : Joi.string().required(),
-    type : Joi.string().valid("PDP", "VDP", "JIR", "PMP", "DIS", "CSB", "CHU", "PDR").required(),
-    description : Joi.string().required(),
-    contact : Joi.string().required(),
-    idUrgence : Joi.number().integer().required(),
+    adresse : Joi.string().required(),
+    numero : Joi.string().required(),
+    heure: Joi.string().required(),
+    service : Joi.string().required(),
+    lien : Joi.string().required(),
+    urgenceName : Joi.string().valid("csb", "dispensaire", "gendarmerie", "hopital", "jirama", "pharmacie", "police").required(),
   });
 
-  const { value, error } = validation.validate(req.body);
-  const {latitude, longitude, nom, type, description, contact, idUrgence} = value;
+  const {latitude, longitude, nom, adresse, numero, heure, service, lien, urgenceName, idUrgence} = req.body;
+  const geom = "POINT ("+longitude+" "+latitude+")";
 
-  if(!error){
-    const geom = "POINT ("+longitude+" "+latitude+")";
-
-    fonction.requeteSansReponse(query.updateUrgence, res, [geom, latitude, longitude, nom, type, description, contact, idUrgence]);
-  } else{
-    console.log("[error] "+error.message);
-    res.status(400);
-    res.end();
-  };
+  fonction.requeteAvecValidation(res, validation, req.body, query.updateUrgence(urgenceName), true, [geom, latitude, longitude, nom, adresse, numero, heure, service, lien, idUrgence]);
 };
 
 const deleteUrgence = (req, res) => {
   const validation = Joi.object({
     idUrgence : Joi.number().integer().required(),
+    urgenceName : Joi.string().valid("csb", "dispensaire", "gendarmerie", "hopital", "jirama", "pharmacie", "police").required(),
   });
 
-  fonction.requeteAvecValidation(res, validation, req.params, query.deleteUrgence, false);
+  fonction.requeteAvecValidation(res, validation, req.params, query.deleteUrgence(req.params.urgenceName), false, [req.params.idUrgence]);
 };
 
 module.exports = {

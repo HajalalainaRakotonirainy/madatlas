@@ -40,12 +40,12 @@
 
     <!--Can be true or false (defaults to: false). -->
     <!--When true the JSONP (text/javascript) output format is enabled -->
-    <!--
+    
     <context-param>
       <param-name>ENABLE_JSONP</param-name>
       <param-value>true</param-value>
     </context-param>
-    -->
+   
     <!--
     <context-param>
       <param-name>PROXY_BASE_URL</param-name>
@@ -139,7 +139,7 @@
     </filter>
 
     <!-- Uncomment following filter to enable CORS in Jetty. Do not forget the second config block further down. -->
-    <!--    
+       
     <filter>
        <filter-name>cross-origin</filter-name>
        <filter-class>org.eclipse.jetty.servlets.CrossOriginFilter</filter-class>
@@ -160,11 +160,11 @@
          <param-value>*</param-value>
        </init-param>
      </filter>
-     -->
+    
 
     <!-- Uncomment following filter to enable CORS in Tomcat. Do not forget the second config block further down. -->
-    <filter>
-       <filter-name>cross-origin</filter-name>
+    <!-- <filter>
+       <filter-name>cross-origin-tomcat</filter-name>
        <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
        <init-param>
          <param-name>cors.allowed.origins</param-name>
@@ -178,7 +178,7 @@
          <param-name>cors.allowed.headers</param-name>
          <param-value>*</param-value>
        </init-param>
-    </filter>
+    </filter> -->
 
     <!--
       THIS FILTER MAPPING MUST BE THE FIRST ONE, otherwise we end up with ruined chars in the input from the GUI
@@ -195,6 +195,11 @@
         <filter-name>cross-origin</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <!-- <filter-mapping>
+        <filter-name>cross-origin-tomcat</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping> -->
 
     <filter-mapping>
         <filter-name>FlushSafeFilter</filter-name>

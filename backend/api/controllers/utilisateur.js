@@ -11,7 +11,7 @@ const getUtilisateurById = (req, res) => {
     idUtilisateur : Joi.number().integer().required(),
   });
 
-  fonction.requeteAvecValidation(res, validation, req.params, query.getUtilisateurById, true);
+  fonction.requeteAvecValidation(res, validation, req.params, query.getUtilisateurById, true, [req.params.idUtilisateur]);
 };
 
 const insertUtilisateur = (req, res) => {
@@ -22,7 +22,9 @@ const insertUtilisateur = (req, res) => {
     password : Joi.string().required(),
   });
 
-  fonction.requeteAvecValidation(res, validation, req.body, query.insertUtilisateur, false);
+  const {nom, prenom, email, password} = req.body
+
+  fonction.requeteAvecValidation(res, validation, req.body, query.insertUtilisateur, false, [nom, prenom, email, password]);
 };
 
 const updateUtilisateur = (req, res) => {
@@ -34,7 +36,9 @@ const updateUtilisateur = (req, res) => {
     idUtilisateur : Joi.number().integer().required(),
   });
 
-  fonction.requeteAvecValidation(res, validation, req.body, query.updateUtilisateur, false);
+  const {nom, prenom, email, password, idUtilisateur} = req.body
+
+  fonction.requeteAvecValidation(res, validation, req.body, query.updateUtilisateur, false, [nom, prenom, email, password, idUtilisateur]);
 };
 
 const deleteUtilisateur = (req, res) => {
@@ -42,7 +46,7 @@ const deleteUtilisateur = (req, res) => {
     idUtilisateur : Joi.number().integer().required(),
   });
 
-  fonction.requeteAvecValidation(res, validation, req.params, query.deleteUtilisateur, false);
+  fonction.requeteAvecValidation(res, validation, req.params, query.deleteUtilisateur, false, [req.params.idUtilisateur]);
 };
 
 module.exports = {

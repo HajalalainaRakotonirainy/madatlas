@@ -18,21 +18,29 @@ function requeteSansReponse(sql, res, data) {
 }
 
 //fonction requête avec validation
-function requeteAvecValidation(res, validation, toValidate, sql, avecReponse) {
-  const { value, error } = validation.validate(toValidate);
-  const data = Object.values(value);
+function requeteAvecValidation(
+  res,
+  validation,
+  toValidate,
+  sql,
+  avecReponse,
+  dataToUse
+) {
+  const { error } = validation.validate(toValidate);
+  // const { value, error } = validation.validate(toValidate);
+  // const data = Object.values(value);
 
-  if(!error){
+  if (!error) {
     if (avecReponse) {
-      requeteAvecReponse(sql, res, data);
+      requeteAvecReponse(sql, res, dataToUse);
     } else {
-      requeteSansReponse(sql, res, data);
+      requeteSansReponse(sql, res, dataToUse);
     }
-  } else{
+  } else {
     console.error("[error] ", error.message);
     res.status(400);
     res.end();
-  };
+  }
 }
 
 module.exports = {

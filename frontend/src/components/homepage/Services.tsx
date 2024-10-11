@@ -66,7 +66,6 @@ export default () => {
           {services.map((service) => (
             <div key={service.id}>
               <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-green-100 lg:h-12 lg:w-12 dark:bg-green-900">
-                <i className="service.icon"></i>
                 <FontAwesomeIcon icon={service.icon} className="text-green-600 dark:text-green-300"/>
               </div>
               <h3 className="mb-2 text-xl font-bold dark:text-white">

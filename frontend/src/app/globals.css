@@ -35,3 +35,7 @@ body {
 .layer-switcher li label {
   color: black;
 }
+
+.bootstrap-container {
+  @import 'bootstrap/dist/css/bootstrap.min.css';
+}

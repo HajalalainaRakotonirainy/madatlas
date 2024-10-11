@@ -1,4 +1,8 @@
-import Image from "next/image";
+import {
+  faCrosshairs,
+  faLocationCrosshairs,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Feature, Geolocation } from "ol";
 import { Point } from "ol/geom";
 import VectorLayer from "ol/layer/Vector";
@@ -7,7 +11,7 @@ import { Style, Fill, Stroke, Circle } from "ol/style";
 import { useState } from "react";
 
 export default ({ view, map }) => {
-  const [source, setsource] = useState("images/crosshairs.svg");
+  const [source, setsource] = useState(faCrosshairs);
   const geolocation = new Geolocation({
     trackingOptions: {
       enableHighAccuracy: true,
@@ -37,8 +41,8 @@ export default ({ view, map }) => {
   const accuracyFeature = new Feature();
 
   //current position user
-  new VectorLayer({
-    map: map,
+  const test = new VectorLayer({
+    // map: map,
     source: new VectorSource({
       features: [accuracyFeature, positionFeature],
     }),
@@ -48,13 +52,16 @@ export default ({ view, map }) => {
     const coordinates = geolocation.getPosition();
     const accuracy = geolocation.getAccuracyGeometry();
 
-    if (source == "images/crosshairs_active.svg") {
-      setsource("images/crosshairs.svg");
-      positionFeature.setGeometry(undefined);
-      accuracyFeature.setGeometry(undefined);
+    if (source == faLocationCrosshairs) {      
+      setsource(faCrosshairs);
+      
+      map.removeLayer(test)
+      positionFeature.setGeometry(null);
+      accuracyFeature.setGeometry(null);
     } else {
       if (coordinates) {
-        setsource("images/crosshairs_active.svg");
+        setsource(faLocationCrosshairs);
+        map.addLayer(test)
         positionFeature.setGeometry(new Point(coordinates));
         accuracyFeature.setGeometry(accuracy);
         view.fit(accuracyFeature.getGeometry(), {
@@ -72,7 +79,7 @@ export default ({ view, map }) => {
       onClick={click}
       className="bg-white rounded-full w-8 h-8 absolute right-5 bottom-10 hover:shadow-lg"
     >
-      <Image src={source} alt="" fill />
+      <FontAwesomeIcon icon={source} color="black" size="2x"/>
     </button>
   );
 };
