@@ -8,11 +8,14 @@ const updateUrgence = (tableName) => `UPDATE ${tableName} SET geom = ST_GeomFrom
 
 const deleteUrgence = (tableName) => `DELETE FROM ${tableName} WHERE id = $1`;
 
+const getNearestUrgence = (tableName) => `SELECT * FROM ${tableName} ORDER BY ST_Distance(geom, ST_SetSRID(ST_MakePoint($1, $2), 4326)) LIMIT 1`;
+
 module.exports = {
   getAllUrgence,
   getUrgenceById,
   insertUrgence,
   updateUrgence,
   deleteUrgence,
+  getNearestUrgence
 };
 

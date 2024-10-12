@@ -4,11 +4,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Feature, Geolocation } from "ol";
+import { Coordinate } from "ol/coordinate";
 import { Point } from "ol/geom";
 import VectorLayer from "ol/layer/Vector";
+import { transform } from "ol/proj";
 import VectorSource from "ol/source/Vector";
 import { Style, Fill, Stroke, Circle } from "ol/style";
 import { useState } from "react";
+
+export let transformCoordinate: Coordinate
 
 export default ({ view, map }) => {
   const [source, setsource] = useState(faCrosshairs);
@@ -60,6 +64,8 @@ export default ({ view, map }) => {
       accuracyFeature.setGeometry(null);
     } else {
       if (coordinates) {
+        transformCoordinate = transform(coordinates, "EPSG:3857", "EPSG:4326");
+        
         setsource(faLocationCrosshairs);
         map.addLayer(test)
         positionFeature.setGeometry(new Point(coordinates));

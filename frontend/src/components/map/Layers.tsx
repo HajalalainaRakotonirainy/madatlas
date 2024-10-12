@@ -20,11 +20,17 @@ function layer(src: String, title: string, layersParam: string, type: string) {
 }
 
 export const csb = layer("images/centre_sante_base.png", "CSB", "sig:csb", "none");
+export const dispensaire = layer("images/dispensaire.png", "Dispensaire", "sig:dispensaire", "none");
+export const gendarmerie = layer("images/police_proximite.png", "Gendarmerie", "sig:gendarmerie", "none");
+export const hopital = layer("images/centre_hospitalier.png", "Hopital", "sig:hopital", "none");
+export const jirama = layer("images/jirama.png", "Jirama", "sig:jirama", "none");
+export const pharmacie = layer("images/pharmacie.png", "Pharmacie", "sig:pharmacie", "none");
+export const police = layer("images/vigie_police.png", "Police", "sig:police", "none");
 
 export const layersGroup = new Group({
   title: "Couches",
   fold: true,
-  layers: [csb],
+  layers: [csb, dispensaire, gendarmerie, hopital, jirama, pharmacie, police],
 });
 
 const baseOSM = new Tile({
@@ -55,5 +61,5 @@ const commune = layer(
 export const baseGroup = new Group({
   title: "Bases",
   fold: true,
-  layers: [baseOSM, baseSatellite, commune],
+  layers: [baseSatellite, baseOSM],
 });

@@ -1,0 +1,17 @@
+<layer>
+  <name>hopital</name>
+  <id>LayerInfoImpl-3c06f087:1927fecb64a:-7ff9</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-3c06f087:1927fecb64a:-7ff0</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-3c06f087:1927fecb64a:-7ffa</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2024-10-12 09:04:48.909 UTC</dateCreated>
+  <dateModified>2024-10-12 09:40:15.241 UTC</dateModified>
+</layer>

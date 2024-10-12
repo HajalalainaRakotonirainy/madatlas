@@ -1,0 +1,46 @@
+<featureType>
+  <id>FeatureTypeInfoImpl-3c06f087:1927fecb64a:-7ffe</id>
+  <name>dispensaire</name>
+  <nativeName>dispensaire</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl-34c0cfd7:191479de32c:-7fff</id>
+  </namespace>
+  <title>dispensaire</title>
+  <keywords>
+    <string>dispensaire</string>
+    <string>features</string>
+  </keywords>
+  <srs>EPSG:4326</srs>
+  <nativeBoundingBox>
+    <minx>46.0</minx>
+    <maxx>48.0</maxx>
+    <miny>-22.0</miny>
+    <maxy>-20.0</maxy>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>46.0</minx>
+    <maxx>48.0</maxx>
+    <miny>-22.0</miny>
+    <maxy>-20.0</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="cachingEnabled">false</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl-34c0cfd7:191479de32c:-7ffe</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <simpleConversionEnabled>false</simpleConversionEnabled>
+  <internationalTitle/>
+  <internationalAbstract/>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

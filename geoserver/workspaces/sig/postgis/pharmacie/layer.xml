@@ -1,0 +1,17 @@
+<layer>
+  <name>pharmacie</name>
+  <id>LayerInfoImpl-3c06f087:1927fecb64a:-7ff5</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-3c06f087:1927fecb64a:-7fee</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-3c06f087:1927fecb64a:-7ff6</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2024-10-12 09:05:21.228 UTC</dateCreated>
+  <dateModified>2024-10-12 09:40:48.275 UTC</dateModified>
+</layer>

@@ -68,11 +68,24 @@ const deleteUrgence = (req, res) => {
   fonction.requeteAvecValidation(res, validation, req.params, query.deleteUrgence(req.params.urgenceName), false, [req.params.idUrgence]);
 };
 
+const getNearestUrgence = (req, res) => {
+  const validation = Joi.object({
+    longitude : Joi.number().precision(6).required(),
+    latitude : Joi.number().precision(6).required(),
+    urgenceName : Joi.string().valid("csb", "dispensaire", "gendarmerie", "hopital", "jirama", "pharmacie", "police").required(),
+  });
+
+  const {longitude, latitude, urgenceName} = req.body
+
+  fonction.requeteAvecValidation(res, validation, req.body, query.getNearestUrgence(urgenceName), true, [longitude, latitude]);
+};
+
 module.exports = {
   getAllUrgence,
   getUrgenceById,
   insertUrgence,
   updateUrgence,
   deleteUrgence,
+  getNearestUrgence,
 };
 

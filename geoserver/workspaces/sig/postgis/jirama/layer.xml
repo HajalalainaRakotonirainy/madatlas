@@ -1,0 +1,17 @@
+<layer>
+  <name>jirama</name>
+  <id>LayerInfoImpl-3c06f087:1927fecb64a:-7ff7</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-3c06f087:1927fecb64a:-7fef</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-3c06f087:1927fecb64a:-7ff8</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2024-10-12 09:05:05.637 UTC</dateCreated>
+  <dateModified>2024-10-12 09:40:32.40 UTC</dateModified>
+</layer>
