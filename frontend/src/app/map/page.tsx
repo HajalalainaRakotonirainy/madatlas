@@ -15,6 +15,8 @@ import FormUser from "@/components/map/FormUser";
 import ListUser from "@/components/map/ListUser";
 import SearchNearestUrgence from "@/components/map/SearchNearestUrgence";
 import { TileWMS } from "ol/source";
+import HomeButton from "@/components/map/HomeButton";
+import { isAuthenticated } from "@/library/IsAuthenticated";
 
 export default () => {
   const [state, setstate] = useState(undefined);
@@ -32,7 +34,12 @@ export default () => {
     id: "",
   });
 
+  const [authenticated, setAuthenticated] = useState(false);
+
   useEffect(() => {
+    isAuthenticated().then((res) => {      
+      setAuthenticated(res);
+    });
     const view = new View({
       center: fromLonLat([5194478.276629483, -2443316.874277159], "EPSG:4326"),
       zoom: 8.8,
@@ -112,9 +119,10 @@ export default () => {
         map={maps}
       />
       <div id="Map" className="absolute h-5/6 w-full"></div>
-      <FormUrgence view={state} map={maps} />
+      { authenticated ? <FormUrgence view={state} map={maps} /> : ""}
       {/* <ListUser /> */}
       <SearchNearestUrgence view={state} map={maps} />
+      <HomeButton view={state}/>
       {state && maps ? <Geolocalisation view={state} map={maps} /> : ""}
     </div>
   );

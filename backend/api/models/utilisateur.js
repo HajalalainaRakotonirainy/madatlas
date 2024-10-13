@@ -8,10 +8,16 @@ const updateUtilisateur = "UPDATE utilisateur SET nom = $1, prenom = $2, email =
 
 const deleteUtilisateur = "DELETE FROM utilisateur WHERE id = $1";
 
+const login = "select * from utilisateur where email = $1 and password = MD5($2)"
+
+const checkUser = "select * from utilisateur where id = $1 and password = MD5($2)"
+
 module.exports = {
   getAllUtilisateur,
   getUtilisateurById,
   insertUtilisateur,
   updateUtilisateur,
   deleteUtilisateur,
+  login,
+  checkUser,
 };

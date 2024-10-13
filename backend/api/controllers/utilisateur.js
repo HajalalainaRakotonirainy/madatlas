@@ -49,11 +49,35 @@ const deleteUtilisateur = (req, res) => {
   fonction.requeteAvecValidation(res, validation, req.params, query.deleteUtilisateur, false, [req.params.idUtilisateur]);
 };
 
+const login = (req, res) => {
+  const validation = Joi.object({
+    email : Joi.string().required(),
+    password : Joi.string().required(),
+  });
+
+  const {email, password} = req.body
+
+  fonction.requeteAvecValidation(res, validation, req.body, query.login, true, [email, password]);
+};
+
+const checkUser = (req, res) => {
+  const validation = Joi.object({
+    password : Joi.string().required(),
+    idUtilisateur : Joi.number().integer().required(),
+  });
+
+  const {idUtilisateur, password} = req.body
+
+  fonction.requeteAvecValidation(res, validation, req.body, query.checkUser, true, [idUtilisateur, password]);
+};
+
 module.exports = {
   getAllUtilisateur,
   getUtilisateurById,
   insertUtilisateur,
   updateUtilisateur,
   deleteUtilisateur,
+  login,
+  checkUser,
 };
 

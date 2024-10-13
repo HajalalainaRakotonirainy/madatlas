@@ -78,13 +78,13 @@ export default ({ view, map }) => {
     <>
       <button
         onClick={() => setShowModal(!showModal)}
-        className="bg-white absolute w-8 h-8 ms-2 mt-28 rounded hover:shadow-lg"
+        className="bg-white absolute w-8 h-8 ms-2 mt-40 rounded hover:shadow-lg"
       >
         <FontAwesomeIcon icon={faSearch} color="green" />
       </button>
 
       {showModal ? (
-        <div className="bg-[rgba(255,255,255,0.7)] absolute ms-14 mt-28 max-w-sm rounded overflow-hidden shadow-lg">
+        <div className="bg-[rgba(255,255,255,0.7)] absolute ms-14 mt-40 max-w-sm rounded overflow-hidden shadow-lg">
           <div className="px-6 py-4">
             <div className="font-bold text-lg mb-2">Rechercher</div>
             <form

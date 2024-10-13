@@ -10,6 +10,7 @@ import { refresh } from "./Refresh";
 import FormUrgence from "./FormUrgence";
 import { Point } from "ol/geom";
 import { fromLonLat } from "ol/proj";
+import { isAuthenticated } from "@/library/IsAuthenticated";
 
 export let overlay: Overlay;
 
@@ -111,20 +112,26 @@ export default ({ data, urgenceName, view, map }) => {
   const content = () => {
     return (
       <>
-        <button className="mr-1">
-          <FontAwesomeIcon
-            icon={faTrash}
-            color="red"
-            onClick={() => handleDelete()}
-          />
-        </button>
-        <button>
-          <FontAwesomeIcon
-            icon={faEdit}
-            color="blue"
-            onClick={() => handleEdit()}
-          />
-        </button>
+        {authenticated ? (
+          <>
+            <button className="mr-1">
+              <FontAwesomeIcon
+                icon={faTrash}
+                color="red"
+                onClick={() => handleDelete()}
+              />
+            </button>
+            <button>
+              <FontAwesomeIcon
+                icon={faEdit}
+                color="blue"
+                onClick={() => handleEdit()}
+              />
+            </button>
+          </>
+        ) : (
+          ""
+        )}
         <div className="flex whitespace-nowrap gap-x-4">
           <h5 className="font-bold">Nom :</h5>
           <p className="col">{data.nom}</p>
@@ -153,7 +160,12 @@ export default ({ data, urgenceName, view, map }) => {
     );
   };
 
+  const [authenticated, setAuthenticated] = useState(false);
+
   useEffect(() => {
+    isAuthenticated().then((res) => {
+      setAuthenticated(res);
+    });
     return () => {
       overlay = new Overlay({
         element: document.getElementById("Popup"),

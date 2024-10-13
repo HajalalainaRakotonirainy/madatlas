@@ -59,7 +59,7 @@ export default ({view, map}) => {
       <button
         id="AddButton"
         onClick={() => setShowModal(true)}
-        className="bg-white absolute w-8 h-8 ms-2 mt-16 rounded hover:shadow-lg"
+        className="bg-white absolute w-8 h-8 ms-2 mt-52 rounded hover:shadow-lg"
       >
         <FontAwesomeIcon icon={faPlus} color="green" />
       </button>

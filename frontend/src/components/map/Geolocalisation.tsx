@@ -83,9 +83,9 @@ export default ({ view, map }) => {
     <button
       id="LocalisationButton"
       onClick={click}
-      className="bg-white rounded-full w-8 h-8 absolute right-5 bottom-10 hover:shadow-lg"
+      className="bg-white absolute w-8 h-8 ms-2 mt-28 rounded hover:shadow-lg"
     >
-      <FontAwesomeIcon icon={source} color="black" size="2x"/>
+      <FontAwesomeIcon icon={source} color="green"/>
     </button>
   );
 };

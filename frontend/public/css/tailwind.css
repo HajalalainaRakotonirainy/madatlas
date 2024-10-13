@@ -1,165 +1,147 @@
-@charset "UTF-8";
-:root {
-  --dt-row-selected: 13, 110, 253;
-  --dt-row-selected-text: 255, 255, 255;
-  --dt-row-selected-link: 9, 10, 11;
-  --dt-row-stripe: 0, 0, 0;
-  --dt-row-hover: 0, 0, 0;
-  --dt-column-ordering: 0, 0, 0;
-  --dt-html-background: white;
-}
-:root.dark {
-  --dt-html-background: rgb(33, 37, 41);
-}
-
-table.dataTable td.dt-control {
-  text-align: center;
-  cursor: pointer;
-}
-table.dataTable td.dt-control:before {
-  display: inline-block;
-  box-sizing: border-box;
-  content: "";
-  border-top: 5px solid transparent;
-  border-left: 10px solid rgba(0, 0, 0, 0.5);
-  border-bottom: 5px solid transparent;
-  border-right: 0px solid transparent;
-}
-table.dataTable tr.dt-hasChild td.dt-control:before {
-  border-top: 10px solid rgba(0, 0, 0, 0.5);
-  border-left: 5px solid transparent;
-  border-bottom: 0px solid transparent;
-  border-right: 5px solid transparent;
-}
-
-html.dark table.dataTable td.dt-control:before,
-:root[data-bs-theme=dark] table.dataTable td.dt-control:before,
-:root[data-theme=dark] table.dataTable td.dt-control:before {
-  border-left-color: rgba(255, 255, 255, 0.5);
-}
-html.dark table.dataTable tr.dt-hasChild td.dt-control:before,
-:root[data-bs-theme=dark] table.dataTable tr.dt-hasChild td.dt-control:before,
-:root[data-theme=dark] table.dataTable tr.dt-hasChild td.dt-control:before {
-  border-top-color: rgba(255, 255, 255, 0.5);
-  border-left-color: transparent;
-}
-
-div.dt-scroll {
+/* Custom DataTable Styles
+{
   width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+} */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-div.dt-scroll-body thead tr,
-div.dt-scroll-body tfoot tr {
-  height: 0;
-}
-div.dt-scroll-body thead tr th, div.dt-scroll-body thead tr td,
-div.dt-scroll-body tfoot tr th,
-div.dt-scroll-body tfoot tr td {
-  height: 0 !important;
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-  border-top-width: 0px !important;
-  border-bottom-width: 0px !important;
-}
-div.dt-scroll-body thead tr th div.dt-scroll-sizing, div.dt-scroll-body thead tr td div.dt-scroll-sizing,
-div.dt-scroll-body tfoot tr th div.dt-scroll-sizing,
-div.dt-scroll-body tfoot tr td div.dt-scroll-sizing {
-  height: 0 !important;
-  overflow: hidden !important;
+thead {
+  background-color: #f5f5f5;
 }
 
-table.dataTable thead > tr > th:active,
-table.dataTable thead > tr > td:active {
-  outline: none;
+th {
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
 }
-table.dataTable thead > tr > th.dt-orderable-asc span.dt-column-order:before, table.dataTable thead > tr > th.dt-ordering-asc span.dt-column-order:before,
-table.dataTable thead > tr > td.dt-orderable-asc span.dt-column-order:before,
-table.dataTable thead > tr > td.dt-ordering-asc span.dt-column-order:before {
-  position: absolute;
-  display: block;
-  bottom: 50%;
-  content: "▲";
-  content: "▲"/"";
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
 }
-table.dataTable thead > tr > th.dt-orderable-desc span.dt-column-order:after, table.dataTable thead > tr > th.dt-ordering-desc span.dt-column-order:after,
-table.dataTable thead > tr > td.dt-orderable-desc span.dt-column-order:after,
-table.dataTable thead > tr > td.dt-ordering-desc span.dt-column-order:after {
-  position: absolute;
-  display: block;
-  top: 50%;
-  content: "▼";
-  content: "▼"/"";
+
+/* Custom buttons */
+.modify-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 0.9rem;
 }
-table.dataTable thead > tr > th.dt-orderable-asc, table.dataTable thead > tr > th.dt-orderable-desc, table.dataTable thead > tr > th.dt-ordering-asc, table.dataTable thead > tr > th.dt-ordering-desc,
-table.dataTable thead > tr > td.dt-orderable-asc,
-table.dataTable thead > tr > td.dt-orderable-desc,
-table.dataTable thead > tr > td.dt-ordering-asc,
-table.dataTable thead > tr > td.dt-ordering-desc {
-  position: relative;
-  padding-right: 30px;
+
+.modify-btn:hover {
+  opacity: 0.7;
 }
-table.dataTable thead > tr > th.dt-orderable-asc span.dt-column-order, table.dataTable thead > tr > th.dt-orderable-desc span.dt-column-order, table.dataTable thead > tr > th.dt-ordering-asc span.dt-column-order, table.dataTable thead > tr > th.dt-ordering-desc span.dt-column-order,
-table.dataTable thead > tr > td.dt-orderable-asc span.dt-column-order,
-table.dataTable thead > tr > td.dt-orderable-desc span.dt-column-order,
-table.dataTable thead > tr > td.dt-ordering-asc span.dt-column-order,
-table.dataTable thead > tr > td.dt-ordering-desc span.dt-column-order {
-  position: absolute;
-  right: 12px;
-  top: 0;
-  bottom: 0;
-  width: 12px;
+
+/* Add custom color for buttons */
+.modify-btn .fa-edit {
+  color: #1d4ed8;
 }
-table.dataTable thead > tr > th.dt-orderable-asc span.dt-column-order:before, table.dataTable thead > tr > th.dt-orderable-asc span.dt-column-order:after, table.dataTable thead > tr > th.dt-orderable-desc span.dt-column-order:before, table.dataTable thead > tr > th.dt-orderable-desc span.dt-column-order:after, table.dataTable thead > tr > th.dt-ordering-asc span.dt-column-order:before, table.dataTable thead > tr > th.dt-ordering-asc span.dt-column-order:after, table.dataTable thead > tr > th.dt-ordering-desc span.dt-column-order:before, table.dataTable thead > tr > th.dt-ordering-desc span.dt-column-order:after,
-table.dataTable thead > tr > td.dt-orderable-asc span.dt-column-order:before,
-table.dataTable thead > tr > td.dt-orderable-asc span.dt-column-order:after,
-table.dataTable thead > tr > td.dt-orderable-desc span.dt-column-order:before,
-table.dataTable thead > tr > td.dt-orderable-desc span.dt-column-order:after,
-table.dataTable thead > tr > td.dt-ordering-asc span.dt-column-order:before,
-table.dataTable thead > tr > td.dt-ordering-asc span.dt-column-order:after,
-table.dataTable thead > tr > td.dt-ordering-desc span.dt-column-order:before,
-table.dataTable thead > tr > td.dt-ordering-desc span.dt-column-order:after {
-  left: 0;
-  opacity: 0.125;
-  line-height: 9px;
-  font-size: 0.8em;
+
+.modify-btn .fa-trash {
+  color: #ef4444;
 }
-table.dataTable thead > tr > th.dt-orderable-asc, table.dataTable thead > tr > th.dt-orderable-desc,
-table.dataTable thead > tr > td.dt-orderable-asc,
-table.dataTable thead > tr > td.dt-orderable-desc {
+
+/* Adjust DataTable controls (pagination, search, etc.) */
+.dataTables_paginate {
+  margin-top: 1rem;
+}
+
+.dataTables_paginate .paginate_button {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 5px;
   cursor: pointer;
 }
-table.dataTable thead > tr > th.dt-orderable-asc:hover, table.dataTable thead > tr > th.dt-orderable-desc:hover,
-table.dataTable thead > tr > td.dt-orderable-asc:hover,
-table.dataTable thead > tr > td.dt-orderable-desc:hover {
-  outline: 2px solid rgba(0, 0, 0, 0.05);
-  outline-offset: -2px;
-}
-table.dataTable thead > tr > th.dt-ordering-asc span.dt-column-order:before, table.dataTable thead > tr > th.dt-ordering-desc span.dt-column-order:after,
-table.dataTable thead > tr > td.dt-ordering-asc span.dt-column-order:before,
-table.dataTable thead > tr > td.dt-ordering-desc span.dt-column-order:after {
-  opacity: 0.6;
-}
-table.dataTable thead > tr > th.sorting_desc_disabled span.dt-column-order:after, table.dataTable thead > tr > th.sorting_asc_disabled span.dt-column-order:before,
-table.dataTable thead > tr > td.sorting_desc_disabled span.dt-column-order:after,
-table.dataTable thead > tr > td.sorting_asc_disabled span.dt-column-order:before {
-  display: none;
-}
-table.dataTable thead > tr > th:active,
-table.dataTable thead > tr > td:active {
-  outline: none;
+
+.dataTables_paginate .paginate_button:hover {
+  background-color: #3b82f6;
 }
 
-div.dt-scroll-body > table.dataTable > thead > tr > th,
-div.dt-scroll-body > table.dataTable > thead > tr > td {
-  overflow: hidden;
+/* Custom search box style */
+#dt-search-1{
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-left: 10px;
+  align-items: end;
 }
 
-:root.dark table.dataTable thead > tr > th.dt-orderable-asc:hover, :root.dark table.dataTable thead > tr > th.dt-orderable-desc:hover,
-:root.dark table.dataTable thead > tr > td.dt-orderable-asc:hover,
-:root.dark table.dataTable thead > tr > td.dt-orderable-desc:hover,
-:root[data-bs-theme=dark] table.dataTable thead > tr > th.dt-orderable-asc:hover,
-:root[data-bs-theme=dark] table.dataTable thead > tr > th.dt-orderable-desc:hover,
-:root[data-bs-theme=dark] table.dataTable thead > tr > td.dt-orderable-asc:hover,
-:root[data-bs-theme=dark] table.dataTable thead > tr > td.dt-orderable-desc:hover {
-  outline: 2px solid rgba(255, 255, 255, 0.05);
+div.dt-container div.dt-search, div.dt-container div.dt-paging  {
+  text-align: right;
 }
+
+@media screen and (max-width: 767px) {
+  div.dt-container div.dt-length,
+  div.dt-container div.dt-search,
+  div.dt-container div.dt-info{
+    text-align: center;
+  }
+  div.dt-container div.dt-paging {
+    justify-content: center;
+  }
+  div.dt-container .row {
+    --bs-gutter-y: 0.5rem;
+  }
+  div.dt-container div.dt-paging ul.pagination {
+    justify-content: center !important;
+  }
+}
+
+/* Custom Pagination Styles */
+.dt-paging {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  /* margin-top: 1rem; */
+}
+
+.dt-paging nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dt-paging-button {
+  background-color: #4f46e5; /* Indigo background */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.dt-paging-button:hover {
+  background-color: #3b82f6; /* Lighter blue on hover */
+}
+
+.dt-paging-button.disabled {
+  background-color: #d1d5db; /* Disabled buttons in gray */
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.dt-paging-button.current {
+  background-color: #22c55e; /* Green for the active page */
+  color: white;
+  font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dt-paging-button {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
+
