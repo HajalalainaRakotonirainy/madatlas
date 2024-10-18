@@ -13,7 +13,8 @@ services:
     image: node:lts
     container_name: backend-sig
     depends_on:
-      - postgis
+      postgis:
+        condition: service_healthy
     ports:
       - ${BACKEND_PORT}:3001
     volumes:
@@ -30,6 +31,12 @@ services:
       POSTGRES_PASSWORD: ${PASSWORD}
     volumes:
       - postgis-sig-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
 
   pgadmin:
     image: dpage/pgadmin4

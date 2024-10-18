@@ -43,46 +43,22 @@ export default () => {
   function handleDelete(id: number) {
     Swal.fire({
       icon: "warning",
+      text: "Voulez-vous vraiment supprimer?",
       showCancelButton: true,
-      input: "password",
-      inputLabel: "Entrer mot de passe de l'utilisateur a supprimer",
-      confirmButtonText: "Supprimer",
-      cancelButtonText: "Annuler",
     }).then((resp) => {
       if (resp.isConfirmed) {
-        axios
-          .post(`http://localhost:3001/utilisateur/check`, {
-            idUtilisateur: id,
-            password: resp.value,
-          })
-          .then((response) => {
-            if (response.data.length > 0) {
-              axios
-                .delete(`http://localhost:3001/utilisateur/${id}/`)
-                .then(() => {
-                  loadData();
-                  Swal.fire({
-                    text: "Utilisateur supprimé avec succés",
-                    icon: "success",
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timerProgressBar: true,
-                    timer: 2000,
-                  });
-                });
-            } else {
-              Swal.fire({
-                text: "Mot de passe error",
-                icon: "error",
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timerProgressBar: true,
-                timer: 2000,
-              });
-            }
+        axios.delete(`http://localhost:3001/utilisateur/${id}/`).then(() => {
+          loadData();
+          Swal.fire({
+            text: "Utilisateur supprimé avec succés",
+            icon: "success",
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timerProgressBar: true,
+            timer: 2000,
           });
+        });
       }
     });
   }

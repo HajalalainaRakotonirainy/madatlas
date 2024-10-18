@@ -6,7 +6,7 @@ export const isAuthenticated = async () => {
     const email = cookies().get("email")?.value;    
 
     if (!password || !email) {
-      return false;
+      return false
     }
 
     const response = await fetch("http://backend-sig:3001/utilisateur/login", {
@@ -16,12 +16,14 @@ export const isAuthenticated = async () => {
       },
       body: JSON.stringify({ email, password }),
     });
-    
-    if (response.ok) {
-      return true;
+
+      
+    if (response.ok && response.status == 200) {           
+      return true
     } else {
       cookies().delete("email")
       cookies().delete("token")
-      return false;
+      cookies().delete("type")
+      return false
     }
   };

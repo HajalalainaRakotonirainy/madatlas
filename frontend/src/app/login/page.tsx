@@ -26,6 +26,7 @@ const Login = () => {
       if (data.length > 0) {
         Cookies.set("token", data[0].password);
         Cookies.set("email", data[0].email);
+        Cookies.set("type", data[0].type);
         Swal.fire({
           text: "Utilisateur connecté avec succés",
           icon: "success",
