@@ -1,4 +1,4 @@
-import { faClose, faMinus, faPlus, faUserGroup } from "@fortawesome/free-solid-svg-icons";
+import { faClose, faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
