@@ -37,7 +37,6 @@ export default () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Check if password and confirm password match
     if (data.password !== confirmPassword) {
       Swal.fire({
         text: "Les mots de passe ne correspondent pas.",
